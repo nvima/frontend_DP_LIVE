@@ -30,6 +30,7 @@ jobs:
     - run: npm ci
     
     steps:
+    - run: echo $NEXT_LOCALE
     - name: Build DE
       env:
         NEXT_LOCALE: de
@@ -47,6 +48,7 @@ jobs:
       run: aws s3 sync ./out s3://dp-live-delivery/de/ --delete
       
     steps:
+    - run: echo $NEXT_LOCALE
     - name: Build EN
       env:
         NEXT_LOCALE: en
