@@ -30,9 +30,7 @@ jobs:
     - run: npm ci
     
     - name: Build DE
-      run: echo $NEXT_LOCALE
-    - run: npm run build --if-present
-    - run: echo $NEXT_LOCALE
+      run: npm run build --if-present
     - run: npm run export
       env:
         NEXT_LOCALE: de
@@ -46,9 +44,7 @@ jobs:
       run: aws s3 sync ./out s3://dp-live-delivery/de/ --delete
       
     - name: Build EN
-      run: echo $NEXT_LOCALE
-    - run: npm run build --if-present
-    - run: echo $NEXT_LOCALE
+      run: npm run build --if-present
     - run: npm run export
       env:
         NEXT_LOCALE: en
@@ -61,30 +57,30 @@ jobs:
     - name: Deploy to S3
       run: aws s3 sync ./out s3://dp-live-delivery/en/ --delete
       
-    # - name: Build FR
-    #   env:
-    #     NEXT_LOCALE: fr
-    #   run: npm run build --if-present
-    # - run: npm run export
-    # - name: Set AWS credentials
-    #   uses: aws-actions/configure-aws-credentials@v1
-    #   with:
-    #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #     aws-region: eu-central-1
-    # - name: Deploy to S3
-    #   run: aws s3 sync ./out s3://dp-live-delivery/fr/ --delete
-    #   
-    # - name: Build ES
-    #   env:
-    #     NEXT_LOCALE: es
-    #   run: npm run build --if-present
-    # - run: npm run export
-    # - name: Set AWS credentials
-    #   uses: aws-actions/configure-aws-credentials@v1
-    #   with:
-    #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #     aws-region: eu-central-1
-    # - name: Deploy to S3
-    #   run: aws s3 sync ./out s3://dp-live-delivery/es/ --delete
+    - name: Build FR
+      run: npm run build --if-present
+    - run: npm run export
+      env:
+        NEXT_LOCALE: fr
+    - name: Set AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-central-1
+    - name: Deploy to S3
+      run: aws s3 sync ./out s3://dp-live-delivery/fr/ --delete
+      
+    - name: Build ES
+      run: npm run build --if-present
+    - run: npm run export
+      env:
+        NEXT_LOCALE: es
+    - name: Set AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-central-1
+    - name: Deploy to S3
+      run: aws s3 sync ./out s3://dp-live-delivery/es/ --delete
