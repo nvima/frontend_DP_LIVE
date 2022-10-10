@@ -12,7 +12,7 @@ interface Props {
 class MyDocument extends Document<Props> {
   render() {
     return (
-      <Html lang={process.env.NEXT_PUBLIC_LOCALE}>
+      <Html lang={this.props.locale}>
         <Head />
         <body>
           <Main />
