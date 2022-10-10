@@ -34,12 +34,12 @@ export default function Layout({ title, children }) {
             </a>
           </Link>
           <nav className='md:block hidden font-semibold font-mono'>
-            <Link href='/about'>
+            <Link href='/about' locale={process.env.NEXT_PUBLIC_LOCALE}>
               <a className='cursor-pointer mr-12 hover:text-delivery'>
                 <FormattedMessage defaultMessage='Über uns' />
               </a>
             </Link>
-            <Link href='/faq'>
+            <Link href='/faq' locale={process.env.NEXT_PUBLIC_LOCALE}>
               <a className='cursor-pointer mr-12 hover:text-delivery'>
                 <FormattedMessage defaultMessage='FAQ' />
               </a>
