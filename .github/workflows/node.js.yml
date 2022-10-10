@@ -30,8 +30,8 @@ jobs:
     - run: npm ci
     
     - name: Build DE
-      run: NEXT_LOCALE=de npm run build --if-present
-    - run: NEXT_LOCALE=de npm run export
+      run: NEXT_PUBLIC_LOCALE=de npm run build --if-present
+    - run: NEXT_PUBLIC_LOCALE=de npm run export
     - name: Set AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -47,10 +47,10 @@ jobs:
     - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_DE}} --paths '/*'; 
 
     - name: Build EN
-      run: NEXT_LOCALE=en npm run build --if-present
-    - run: NEXT_LOCALE=en npm run export
+      run: NEXT_PUBLIC_LOCALE=en npm run build --if-present
+    - run: NEXT_PUBLIC_LOCALE=en npm run export
       env:
-        NEXT_LOCALE: en
+        NEXT_PUBLIC_LOCALE: en
     - name: Set AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -66,8 +66,8 @@ jobs:
     - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_EN}} --paths '/*'; 
       
     - name: Build FR
-      run: NEXT_LOCALE=fr npm run build --if-present
-    - run: NEXT_LOCALE=fr npm run export
+      run: NEXT_PUBLIC_LOCALE=fr npm run build --if-present
+    - run: NEXT_PUBLIC_LOCALE=fr npm run export
     - name: Set AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -83,8 +83,8 @@ jobs:
     - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_FR}} --paths '/*'; 
       
     - name: Build ES
-      run: NEXT_LOCALE=es npm run build --if-present
-    - run: NEXT_LOCALE=es npm run export
+      run: NEXT_PUBLIC_LOCALE=es npm run build --if-present
+    - run: NEXT_PUBLIC_LOCALE=es npm run export
     - name: Set AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:

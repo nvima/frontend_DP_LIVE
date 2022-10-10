@@ -8,7 +8,7 @@ import { polyfill } from '../polyfills'
 import '../styles/globals.css'
 import '../styles/styles.css'
 
-function MyApp({ Component, pageProps, locale = process.env.NEXT_LOCALE, messages }) {
+function MyApp({ Component, pageProps, locale = process.env.NEXT_PUBLIC_LOCALE, messages }) {
   return (
     <IntlProvider locale={locale} defaultLocale="de" messages={messages}>
       <DefaultSeo />
@@ -57,7 +57,7 @@ function getMessages(locales: string | string[] = ['de']) {
 }
 
 const getInitialProps: typeof App.getInitialProps = async appContext => {
-  const locale = appContext.router.locale || process.env.NEXT_LOCALE
+  const locale = appContext.router.locale || process.env.NEXT_PUBLIC_LOCALE
   const [supportedLocale, messagePromise] = getMessages(locale)
 
   const [, messages, appProps] = await Promise.all([
