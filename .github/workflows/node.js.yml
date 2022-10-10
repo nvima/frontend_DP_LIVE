@@ -47,7 +47,7 @@ jobs:
     - run: aws s3 sync --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/de/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
     - run: aws s3 sync ./out/ s3://dp-live-delivery/de/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
     # run: aws s3 sync ./out s3://dp-live-delivery/de/ --delete
-    - run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_DE}} --paths '/*'; 
+    - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_DE}} --paths '/*'; 
 
     - name: Build EN
       run: npm run build --if-present
@@ -67,7 +67,7 @@ jobs:
     - run: aws s3 sync --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/en/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
     - run: aws s3 sync ./out/ s3://dp-live-delivery/en/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
     # run: aws s3 sync ./out s3://dp-live-delivery/en/ --delete
-    - run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_EN}} --paths '/*'; 
+    - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_EN}} --paths '/*'; 
       
     - name: Build FR
       run: npm run build --if-present
@@ -87,7 +87,7 @@ jobs:
     - run: aws s3 sync --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/fr/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
     - run: aws s3 sync ./out/ s3://dp-live-delivery/fr/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
     # run: aws s3 sync ./out s3://dp-live-delivery/fr/ --delete
-    - run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_FR}} --paths '/*'; 
+    - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_FR}} --paths '/*'; 
       
     - name: Build ES
       run: npm run build --if-present
@@ -107,4 +107,4 @@ jobs:
     - run: aws s3 sync --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/es/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
     - run: aws s3 sync ./out/ s3://dp-live-delivery/es/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
     # run: aws s3 sync ./out s3://dp-live-delivery/es/ --delete
-    - run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_ES}} --paths '/*'; 
+    - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_ES}} --paths '/*'; 
