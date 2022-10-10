@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 export default function Home() {
   const intl = useIntl()
 
+
   return (
     <Layout
       title={intl.formatMessage({
