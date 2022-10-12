@@ -51,9 +51,8 @@ export default function Home() {
 
     try{
       const response = await fetch(endpoint, options)
-      const result = await response.json()
       console.log('try')
-      console.log(result)
+      console.log(response)
     }catch(err){
       console.log('catch')
       console.log(err)
