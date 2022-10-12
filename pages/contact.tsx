@@ -53,10 +53,15 @@ export default function Home() {
     try{
       const response = await fetch(endpoint, options)
       const result = await response.text()
+      console.log("1")
       console.log(result)
+      console.log(response)
+      console.log("2")
       setMessageSent(true)
     }catch(err){
+      console.log("3")
       console.log(err)
+      console.log("4")
       setApiError(true)
     }
   }
