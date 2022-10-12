@@ -1,8 +1,8 @@
-import {FormEvent, ChangeEvent, useState} from 'react'
-import {FormattedMessage, useIntl} from 'react-intl'
+import { FormEvent, ChangeEvent, useState } from 'react'
+import { FormattedMessage, useIntl } from 'react-intl'
 
 import Layout from '../components/Layout'
-import {SvgContact} from '../components/SvgContact'
+import { SvgContact } from '../components/SvgContact'
 
 export default function Home() {
   const intl = useIntl()
@@ -24,11 +24,11 @@ export default function Home() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    /* if (!validateEmail(emailInput)) { */
-    /*   setEmailError(true) */
-    /*   return */
-    /* } */
-    /* setEmailError(false) */
+    if (!validateEmail(emailInput)) {
+      setEmailError(true)
+      return
+    }
+    setEmailError(false)
     if (messageInput.length == 0) {
       setMessageError(true)
       return
@@ -62,24 +62,59 @@ export default function Home() {
         setApiError(true)
       }
     } catch (err) {
-      console.log(err)
+      console.error(err)
       setApiError(true)
     }
+  }
+
+  function getUrl() {
+    return process.env.NEXT_PUBLIC_LOCALE == 'en'
+      ? 'https://delivery.plus/'
+      : process.env.NEXT_PUBLIC_LOCALE == 'de'
+        ? 'https://de.delivery.plus/'
+        : process.env.NEXT_PUBLIC_LOCALE == 'fr'
+          ? 'https://fr.delivery.plus/'
+          : process.env.NEXT_PUBLIC_LOCALE == 'es'
+            ? 'https://es.delivery.plus/'
+            : 'https://delivery.plus/'
   }
 
   return (
     <Layout
       title={intl.formatMessage({
-        defaultMessage: 'Contact',
+        defaultMessage: 'Delivery+ | Kontakt',
       })}
+      description={intl.formatMessage({
+        defaultMessage:
+          'Hast du noch Fragen zu Delivery Plus? Oder bieten wir noch nicht die Lösung an die Du benötigst. Nimm gerne Kontakt mit uns auf.',
+      })}
+      noindex={false}
+      nofollow={false}
+      openGraph={{
+        url: getUrl(),
+        type: 'website',
+        locale: process.env.NEXT_PUBLIC_LOCALE,
+        site_name: intl.formatMessage({
+          defaultMessage: 'Delivery+ | Kontakt',
+        }),
+        images: {
+          url: getUrl() + 'og-delivery.jpg',
+          width: '640',
+          height: '610',
+          alt: intl.formatMessage({
+            defaultMessage: 'Lieferung App',
+          }),
+          type: 'image/jpeg',
+        },
+      }}
     >
       <section className='max-w-7xl mx-auto px-4 pb-20'>
         <div className='md:mt-20 mt-8 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-50 rounded-xl border border-grey-200'>
           <div className='flex flex-col justify-between'>
             <div>
-              <h2 className='font-mono text-4xl lg:text-5xl font-extrabold leading-tight'>
+              <h1 className='font-mono text-4xl lg:text-5xl font-extrabold leading-tight'>
                 <FormattedMessage defaultMessage='Kontakt' />
-              </h2>
+              </h1>
               <div className='text-gray-700 mt-8'>
                 <FormattedMessage defaultMessage='Email:' />
                 <span className='underline pl-1'>
@@ -152,13 +187,13 @@ export default function Home() {
               &#8226;{' '}
               {emailError
                 ? intl.formatMessage({
-                    defaultMessage: 'E-Mail Adresse ist nicht korrekt',
-                  })
+                  defaultMessage: 'E-Mail Adresse ist nicht korrekt',
+                })
                 : messagError
-                ? intl.formatMessage({
+                  ? intl.formatMessage({
                     defaultMessage: 'Bitte gebe eine Nachricht ein',
                   })
-                : ''}
+                  : ''}
             </div>
             <div className='mt-8'>
               <button className='uppercase text-sm font-bold tracking-wide bg-delivery text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline'>

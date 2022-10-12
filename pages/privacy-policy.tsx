@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {FormattedMessage, useIntl} from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 
 import Layout from '../components/Layout'
 
@@ -8,14 +8,16 @@ export default function Home() {
 
   return (
     <Layout
-      title={intl.formatMessage({
-        defaultMessage: 'About',
-      })}
+      title={intl.formatMessage({ defaultMessage: 'About' })}
+      description={intl.formatMessage({ defaultMessage: 'Description' })}
+      noindex={true}
+      nofollow={true}
+      openGraph={null}
     >
       <section className='max-w-7xl mx-auto px-4 text-sm p-4'>
-        <h2 className='font-extrabold md:text-5xl text-4xl font-mono py-12'>
+        <h1 className='font-extrabold md:text-5xl text-4xl font-mono py-12'>
           Datenschutzerklärung
-        </h2>
+        </h1>
         <p className='py-4 font-semibold text-lg'>
           Verantwortlicher im Sinne der Datenschutzgesetze, insbesondere der
           EU-Datenschutzgrundverordnung (DSGVO), ist:

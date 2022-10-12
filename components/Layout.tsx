@@ -4,7 +4,14 @@ import * as React from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
 import Link from 'next/link'
 
-export default function Layout({ title, children }) {
+export default function Layout({
+  title,
+  description,
+  noindex,
+  nofollow,
+  openGraph,
+  children
+}) {
   const intl = useIntl()
 
   return (
@@ -19,7 +26,13 @@ export default function Layout({ title, children }) {
         </title>
       </Head>
 
-      <NextSeo title={title} />
+      <NextSeo
+        title={title}
+        description={description}
+        noindex={noindex}
+        nofollow={nofollow}
+        openGraph={openGraph}
+      />
 
       <header className='border-b h-18 content-center align-middle w-full'>
         <div className='flex justify-between items-center max-w-7xl mx-auto px-4 content-center align-middle h-full'>

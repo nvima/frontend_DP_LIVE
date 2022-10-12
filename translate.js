@@ -35,8 +35,10 @@ async function go() {
     let keyFound = false
     for (const prop in originalContent) {
       //Check already translated
-      if (prop in file){
-        console.log('already translated continue: ' + prop + ' ' + translation.lang)
+      if (prop in file) {
+        console.log(
+          'already translated continue: ' + prop + ' ' + translation.lang
+        )
         continue
       }
       //Check for aborted Keys
@@ -55,14 +57,14 @@ async function go() {
           from: originalLang,
           to: translation.lang,
         })
-        console.log("translated prop: "+prop)
+        console.log('translated prop: ' + prop)
         console.log(res.text)
         file[prop] = res.text
       } catch (err) {
         console.log(originalContent[prop])
         console.log(originalLang)
         console.log(translation.lang)
-        console.log("error catch")
+        console.log('error catch')
         console.log(err)
         noAbort = false
         const aborted = {
@@ -84,7 +86,20 @@ async function go() {
   }
   //Check if there is Abort File, but no Aborts in this Run, to delete the Abort File
   if (noAbort && isAborted) {
+    console.log('Deleted Abort File')
     fs.unlinkSync(abortFilePath)
+  }
+  console.log('start unnecessary translations checker')
+  await delay(sleepTimer)
+  for (const translation of translations) {
+    const file = JSON.parse(fs.readFileSync(langDir + translation.file, 'utf8'))
+    for (const prop in file) {
+      if (originalContent[prop] == undefined) {
+        delete file[prop]
+        console.log(translation.lang.toUpperCase() + ': ' + prop + ' deleted')
+      }
+    }
+    fs.writeFileSync(langDir + translation.file, JSON.stringify(file, null, 2))
   }
 }
 

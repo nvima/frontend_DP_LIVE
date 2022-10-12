@@ -46,55 +46,55 @@ jobs:
     - run: aws s3 sync ./out/ s3://dp-live-delivery/de/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
     - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_DE}} --paths '/*'; 
 
-    # - name: Build EN
-    #   run: NEXT_PUBLIC_LOCALE=en npm run build --if-present
-    # - run: NEXT_PUBLIC_LOCALE=en npm run export
-    #   env:
-    #     NEXT_PUBLIC_LOCALE: en
-    # - name: Set AWS credentials
-    #   uses: aws-actions/configure-aws-credentials@v1
-    #   with:
-    #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #     aws-region: eu-central-1
-    # - name: Deploy to S3
-    #   run: aws s3 rm s3://dp-live-delivery/en/ --recursive
-    # - run: aws s3 sync ./out/_next/ s3://dp-live-delivery/en/_next/
-    # - run: for file in $(find ./out -name "*.html"); do mv "$file" "${file%%.html}"; done
-    # - run: aws s3 sync --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/en/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
-    # - run: aws s3 sync ./out/ s3://dp-live-delivery/en/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
-    # - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_EN}} --paths '/*'; 
-    #   
-    # - name: Build FR
-    #   run: NEXT_PUBLIC_LOCALE=fr npm run build --if-present
-    # - run: NEXT_PUBLIC_LOCALE=fr npm run export
-    # - name: Set AWS credentials
-    #   uses: aws-actions/configure-aws-credentials@v1
-    #   with:
-    #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #     aws-region: eu-central-1
-    # - name: Deploy to S3
-    #   run: aws s3 rm s3://dp-live-delivery/fr/ --recursive
-    # - run: aws s3 sync ./out/_next/ s3://dp-live-delivery/fr/_next/
-    # - run: for file in $(find ./out -name "*.html"); do mv "$file" "${file%%.html}"; done
-    # - run: aws s3 sync --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/fr/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
-    # - run: aws s3 sync ./out/ s3://dp-live-delivery/fr/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
-    # - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_FR}} --paths '/*'; 
-    #   
-    # - name: Build ES
-    #   run: NEXT_PUBLIC_LOCALE=es npm run build --if-present
-    # - run: NEXT_PUBLIC_LOCALE=es npm run export
-    # - name: Set AWS credentials
-    #   uses: aws-actions/configure-aws-credentials@v1
-    #   with:
-    #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #     aws-region: eu-central-1
-    # - name: Deploy to S3
-    #   run: aws s3 rm s3://dp-live-delivery/es/ --recursive
-    # - run: aws s3 sync ./out/_next/ s3://dp-live-delivery/es/_next/
-    # - run: for file in $(find ./out -name "*.html"); do mv "$file" "${file%%.html}"; done
-    # - run: aws s3 sync --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/es/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
-    # - run: aws s3 sync ./out/ s3://dp-live-delivery/es/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
-    # - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_ES}} --paths '/*'; 
+    - name: Build EN
+      run: NEXT_PUBLIC_LOCALE=en npm run build --if-present
+    - run: NEXT_PUBLIC_LOCALE=en npm run export
+      env:
+        NEXT_PUBLIC_LOCALE: en
+    - name: Set AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-central-1
+    - name: Deploy to S3
+      run: aws s3 rm s3://dp-live-delivery/en/ --recursive
+    - run: aws s3 sync ./out/_next/ s3://dp-live-delivery/en/_next/
+    - run: for file in $(find ./out -name "*.html"); do mv "$file" "${file%%.html}"; done
+    - run: aws s3 sync --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/en/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
+    - run: aws s3 sync ./out/ s3://dp-live-delivery/en/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
+    - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_EN}} --paths '/*'; 
+      
+    - name: Build FR
+      run: NEXT_PUBLIC_LOCALE=fr npm run build --if-present
+    - run: NEXT_PUBLIC_LOCALE=fr npm run export
+    - name: Set AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-central-1
+    - name: Deploy to S3
+      run: aws s3 rm s3://dp-live-delivery/fr/ --recursive
+    - run: aws s3 sync ./out/_next/ s3://dp-live-delivery/fr/_next/
+    - run: for file in $(find ./out -name "*.html"); do mv "$file" "${file%%.html}"; done
+    - run: aws s3 sync --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/fr/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
+    - run: aws s3 sync ./out/ s3://dp-live-delivery/fr/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
+    - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_FR}} --paths '/*'; 
+      
+    - name: Build ES
+      run: NEXT_PUBLIC_LOCALE=es npm run build --if-present
+    - run: NEXT_PUBLIC_LOCALE=es npm run export
+    - name: Set AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-central-1
+    - name: Deploy to S3
+      run: aws s3 rm s3://dp-live-delivery/es/ --recursive
+    - run: aws s3 sync ./out/_next/ s3://dp-live-delivery/es/_next/
+    - run: for file in $(find ./out -name "*.html"); do mv "$file" "${file%%.html}"; done
+    - run: aws s3 sync --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/es/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
+    - run: aws s3 sync ./out/ s3://dp-live-delivery/es/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
+    - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_ES}} --paths '/*'; 

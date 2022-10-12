@@ -8,19 +8,50 @@ import Layout from '../components/Layout'
 export default function Home() {
   const intl = useIntl()
 
+  function getUrl() {
+    return process.env.NEXT_PUBLIC_LOCALE == 'en'
+      ? 'https://delivery.plus/'
+      : process.env.NEXT_PUBLIC_LOCALE == 'de'
+        ? 'https://de.delivery.plus/'
+        : process.env.NEXT_PUBLIC_LOCALE == 'fr'
+          ? 'https://fr.delivery.plus/'
+          : process.env.NEXT_PUBLIC_LOCALE == 'es'
+            ? 'https://es.delivery.plus/'
+            : 'https://delivery.plus/'
+  }
+
   return (
     <Layout
-      title={intl.formatMessage({
-        defaultMessage: 'Über uns',
-      })}
+      title={intl.formatMessage({ defaultMessage: 'Delivery+ | FAQ' })}
+      description={intl.formatMessage({ defaultMessage: 'Häufig gestellte Fragen zu Delivery Plus. FAQ zur Zahlung, Shop und Homepage.' })}
+      noindex={false}
+      nofollow={false}
+      openGraph={{
+        url: getUrl(),
+        type: 'website',
+        locale: process.env.NEXT_PUBLIC_LOCALE,
+        site_name: intl.formatMessage({
+          defaultMessage:
+            'Delivery+ | FAQ',
+        }),
+        images: {
+          url: getUrl() + 'og-delivery.jpg',
+          width: '640',
+          height: '610',
+          alt: intl.formatMessage({
+            defaultMessage: 'Lieferung App',
+          }),
+          type: 'image/jpeg',
+        },
+      }}
     >
       <section className='max-w-7xl mx-auto px-4'>
         <div className='py-12 md:py-24 max-w-xl sm:mx-auto lg:max-w-2xl'>
           <div className='max-w-xl mb-10 md:mx-auto text-center lg:max-w-2xl md:mb-12'>
             <SvgFaq />
-            <h2 className='max-w-lg mb-6 font-mono text-3xl font-extrabold leading-none tracking-tight sm:text-4xl md:mx-auto'>
+            <h1 className='max-w-lg mb-6 font-mono text-3xl font-extrabold leading-none tracking-tight sm:text-4xl md:mx-auto'>
               <FormattedMessage defaultMessage='Häufig gestellte Fragen' />
-            </h2>
+            </h1>
             <p className='text-base text-gray-700 md:text-lg'>
               <FormattedMessage defaultMessage='Hast Du noch Fragen? info@delivery.plus' />
             </p>

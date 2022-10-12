@@ -19,11 +19,48 @@ export default function Home() {
     })
   }
 
+  function getUrl() {
+    return process.env.NEXT_PUBLIC_LOCALE == 'en'
+      ? 'https://delivery.plus/'
+      : process.env.NEXT_PUBLIC_LOCALE == 'de'
+        ? 'https://de.delivery.plus/'
+        : process.env.NEXT_PUBLIC_LOCALE == 'fr'
+          ? 'https://fr.delivery.plus/'
+          : process.env.NEXT_PUBLIC_LOCALE == 'es'
+            ? 'https://es.delivery.plus/'
+            : 'https://delivery.plus/'
+  }
+
   return (
     <Layout
       title={intl.formatMessage({
-        defaultMessage: 'Home',
+        defaultMessage:
+          'Delivery+ | Bestellsystem für Restaurants & Lieferdienste',
       })}
+      description={intl.formatMessage({
+        defaultMessage:
+          'Smartes Bestellsystem für Ihr Lieferdienst oder Restaurant selber erstellen ✓ Online-Zahlung ✓ Homepage ✓ Günstig ✓ mit Online-Shop.',
+      })}
+      noindex={false}
+      nofollow={false}
+      openGraph={{
+        url: getUrl(),
+        type: 'website',
+        locale: process.env.NEXT_PUBLIC_LOCALE,
+        site_name: intl.formatMessage({
+          defaultMessage:
+            'Delivery+ | Bestellsystem für Restaurants & Lieferdienste',
+        }),
+        images: {
+          url: getUrl() + 'og-delivery.jpg',
+          width: '640',
+          height: '610',
+          alt: intl.formatMessage({
+            defaultMessage: 'Lieferung App',
+          }),
+          type: 'image/jpeg',
+        },
+      }}
     >
       <section className='max-w-7xl mx-auto px-4 w-full flex md:flex-row flex-col items-center md:py-32 py-16'>
         <div>
@@ -36,14 +73,14 @@ export default function Home() {
           <div className='flex mt-8'>
             <a
               href='https://dashboard.delivery.plus/register'
-              className='mobile:ml-auto py-2 px-4 rounded-lg bg-delivery border-2 border-transparent text-white mr-4 hover:bg-delivery'
+              className='mobile:ml-auto py-2 px-4 uppercase rounded-lg bg-delivery border-2 border-transparent text-white mr-4 hover:bg-delivery'
             >
               <FormattedMessage defaultMessage='REGISTRIEREN' />
             </a>
             <a
               href='https://demo.delivery.plus'
               target='_blank'
-              className='mobile:mr-auto py-2 px-4 rounded-lg bg-transparent border-2 border-delivery text-delivery hover:bg-delivery hover:text-white'
+              className='mobile:mr-auto py-2 px-4 uppercase rounded-lg bg-transparent border-2 border-delivery text-delivery hover:bg-delivery hover:text-white'
             >
               <FormattedMessage defaultMessage='DEMOSHOP' />
             </a>
@@ -51,13 +88,16 @@ export default function Home() {
         </div>
         <img
           className='pt-6 md:pt-1'
-          src='/small_imac_1999636_3627020f1a.png'
+          src='/order-system.png'
+          alt={intl.formatMessage({
+            defaultMessage: 'Restaurant Shop System auf allen Endgeräten',
+          })}
         />
       </section>
       <section className='max-w-7xl mx-auto px-4 w-full text-center md:text-lg text-base'>
-        <h3 className='font-extrabold md:text-5xl text-4xl text-center py-12 border-t font-mono'>
+        <h2 className='font-extrabold md:text-5xl text-4xl text-center py-12 border-t font-mono'>
           <FormattedMessage defaultMessage='Funktionen' />
-        </h3>
+        </h2>
         <div className='flex md:flex-row flex-col md:space-x-24 md:py-6 justify-center'>
           <div className='flex-1'>
             <svg
@@ -74,7 +114,7 @@ export default function Home() {
                 d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
               />
             </svg>
-            <p className='p-2 font-extrabold font-mono'>
+            <p className='p-2 font-extrabold font-mono uppercase'>
               <FormattedMessage defaultMessage='ÖFFNUNGSZEITEN' />
             </p>
             <p className='mobile:pb-8 mobile:w-4/5 m-auto'>
@@ -96,7 +136,7 @@ export default function Home() {
                 d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
               />
             </svg>
-            <p className='p-2 font-extrabold font-mono'>
+            <p className='p-2 font-extrabold font-mono uppercase'>
               <FormattedMessage defaultMessage='HOMEPAGE' />
             </p>
             <p className='mobile:pb-8 mobile:w-4/5 m-auto'>
@@ -118,7 +158,7 @@ export default function Home() {
                 d='M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z'
               />
             </svg>
-            <p className='p-2 font-extrabold font-mono'>
+            <p className='p-2 font-extrabold font-mono uppercase'>
               <FormattedMessage defaultMessage='KEIN APP DOWNLOAD' />
             </p>
             <p className='mobile:pb-8 mobile:w-4/5 m-auto'>
@@ -142,7 +182,7 @@ export default function Home() {
                 d='M13 7h8m0 0v8m0-8l-8 8-4-4-6 6'
               />
             </svg>
-            <p className='p-2 font-extrabold font-mono'>
+            <p className='p-2 font-extrabold font-mono uppercase'>
               <FormattedMessage defaultMessage='PROVISIONSFREI' />
             </p>
             <p className='mobile:pb-8 mobile:w-4/5 m-auto'>
@@ -164,7 +204,7 @@ export default function Home() {
                 d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
               />
             </svg>
-            <p className='p-2 font-extrabold font-mono'>
+            <p className='p-2 font-extrabold font-mono uppercase'>
               <FormattedMessage defaultMessage='FLEXIBILITÄT' />
             </p>
             <p className='mobile:pb-8 mobile:w-4/5 m-auto'>
@@ -186,7 +226,7 @@ export default function Home() {
                 d='M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z'
               />
             </svg>
-            <p className='p-2 font-extrabold font-mono'>
+            <p className='p-2 font-extrabold font-mono uppercase'>
               <FormattedMessage defaultMessage='ZAHLUNGSMETHODEN' />
             </p>
             <p className='mobile:pb-8 mobile:w-4/5 m-auto'>

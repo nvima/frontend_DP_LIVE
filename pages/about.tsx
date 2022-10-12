@@ -6,12 +6,45 @@ import Layout from '../components/Layout'
 export default function Home() {
   const intl = useIntl()
 
+  function getUrl() {
+    return process.env.NEXT_PUBLIC_LOCALE == 'en'
+      ? 'https://delivery.plus/'
+      : process.env.NEXT_PUBLIC_LOCALE == 'de'
+        ? 'https://de.delivery.plus/'
+        : process.env.NEXT_PUBLIC_LOCALE == 'fr'
+          ? 'https://fr.delivery.plus/'
+          : process.env.NEXT_PUBLIC_LOCALE == 'es'
+            ? 'https://es.delivery.plus/'
+            : 'https://delivery.plus/'
+  }
 
   return (
     <Layout
-      title={intl.formatMessage({
-        defaultMessage: 'About',
+      title={intl.formatMessage({ defaultMessage: 'Delivery+ | Über uns' })}
+      description={intl.formatMessage({
+        defaultMessage:
+          'Die Idee hinter Delivery Plus ist, dass jeder seinen eigenen Shop mit Homepage erstellen kann für das eigene Restaurant oder Lieferdienst',
       })}
+      noindex={false}
+      nofollow={false}
+      openGraph={{
+        url: getUrl(),
+        type: 'website',
+        locale: process.env.NEXT_PUBLIC_LOCALE,
+        site_name: intl.formatMessage({
+          defaultMessage:
+            'Delivery+ | Über uns',
+        }),
+        images: {
+          url: getUrl() + 'og-delivery.jpg',
+          width: '640',
+          height: '610',
+          alt: intl.formatMessage({
+            defaultMessage: 'Lieferung App',
+          }),
+          type: 'image/jpeg',
+        },
+      }}
     >
       <section className='max-w-7xl mx-auto px-4 flex flex-col md:flex-row-reverse pb-20'>
         <div className='flex-1'>
