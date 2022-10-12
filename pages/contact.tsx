@@ -11,6 +11,8 @@ export default function Home() {
   const [messageInput, setMessageInput] = useState<string>('')
   const [emailError, setEmailError] = useState<boolean>(false)
   const [messagError, setMessageError] = useState<boolean>(false)
+  const [messagSent, setMessageSent] = useState<boolean>(false)
+  const [apiError, setApiError] = useState<boolean>(false)
 
   const validateEmail = (emailAdress: string) => {
     return String(emailAdress)
@@ -22,12 +24,11 @@ export default function Home() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
-    if (!validateEmail(emailInput)) {
-      setEmailError(true)
-      return
-    }
-    setEmailError(false)
+    /* if (!validateEmail(emailInput)) { */
+    /*   setEmailError(true) */
+    /*   return */
+    /* } */
+    /* setEmailError(false) */
     if (messageInput.length == 0) {
       setMessageError(true)
       return
@@ -51,13 +52,13 @@ export default function Home() {
 
     try{
       const response = await fetch(endpoint, options)
-      console.log('try')
-      console.log(response)
+      const result = await response.text()
+      console.log(result)
+      setMessageSent(true)
     }catch(err){
-      console.log('catch')
       console.log(err)
+      setApiError(true)
     }
-    console.log('sendData')
   }
 
   return (
@@ -84,12 +85,17 @@ export default function Home() {
               <SvgContact />
             </div>
           </div>
-          <div className='hidden'>
+          <div className={messagSent ? '':'hidden'}>
             <p>
               <FormattedMessage defaultMessage='Wir werden uns schnellstmöglich bei dir melden.' />
             </p>
           </div>
-          <form onSubmit={handleSubmit}>
+          <div className={apiError ? '':'hidden'}>
+            <p>
+              <FormattedMessage defaultMessage='Etwas lief schief. Bitte melde dich unter info@delivery.plus' />
+            </p>
+          </div>
+          <form className={messagSent || apiError ? 'hidden':''} onSubmit={handleSubmit}>
             <div>
               <span className='uppercase text-sm text-gray-600 font-bold'>
                 <FormattedMessage defaultMessage='Name' />
