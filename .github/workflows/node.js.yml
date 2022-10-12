@@ -40,10 +40,10 @@ jobs:
         aws-region: eu-central-1
     - name: Deploy to S3
       run: aws s3 rm s3://dp-live-delivery/de/ --recursive
-    - run: aws s3 sync --cache-control 'max-age=604800' ./out/_next/ s3://dp-live-delivery/de/_next/
+    - run: aws s3 sync --cache-control 'max-age=31536000' ./out/_next/ s3://dp-live-delivery/de/_next/
     - run: for file in $(find ./out -name "*.html"); do mv "$file" "${file%%.html}"; done
-    - run: aws s3 sync --cache-control 'max-age=604800' --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/de/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
-    - run: aws s3 sync --cache-control 'max-age=604800' ./out/ s3://dp-live-delivery/de/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
+    - run: aws s3 sync --cache-control 'max-age=31536000' --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/de/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
+    - run: aws s3 sync --cache-control 'max-age=31536000' ./out/ s3://dp-live-delivery/de/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
     - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_DE}} --paths '/*'; 
 
     # - name: Build EN

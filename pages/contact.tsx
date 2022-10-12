@@ -113,6 +113,7 @@ export default function Home() {
           <div className='flex flex-col justify-between'>
             <div>
               <h1 className='font-mono text-4xl lg:text-5xl font-extrabold leading-tight'>
+                test
                 <FormattedMessage defaultMessage='Kontakt' />
               </h1>
               <div className='text-gray-700 mt-8'>
