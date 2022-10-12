@@ -1,8 +1,8 @@
-import { FormEvent, ChangeEvent, useState } from 'react'
-import { FormattedMessage, useIntl } from 'react-intl'
+import {FormEvent, ChangeEvent, useState} from 'react'
+import {FormattedMessage, useIntl} from 'react-intl'
 
 import Layout from '../components/Layout'
-import { SvgContact } from '../components/SvgContact'
+import {SvgContact} from '../components/SvgContact'
 
 export default function Home() {
   const intl = useIntl()
@@ -41,7 +41,8 @@ export default function Home() {
       message: messageInput,
     }
     const JSONdata = JSON.stringify(data)
-    const endpoint = 'https://btnyr0xuyk.execute-api.eu-central-1.amazonaws.com/DP_LIVE/messages/create'
+    const endpoint =
+      'https://btnyr0xuyk.execute-api.eu-central-1.amazonaws.com/DP_LIVE/messages/create'
     const options = {
       method: 'POST',
       headers: {
@@ -50,18 +51,18 @@ export default function Home() {
       body: JSONdata,
     }
 
-    try{
+    try {
       const response = await fetch(endpoint, options)
       const result = await response.text()
-      console.log("1")
-      console.log(result)
-      console.log(response)
-      console.log("2")
-      setMessageSent(true)
-    }catch(err){
-      console.log("3")
+      if (response.status == 200) {
+        setMessageSent(true)
+      } else {
+        console.error(result)
+        console.error(response)
+        setApiError(true)
+      }
+    } catch (err) {
       console.log(err)
-      console.log("4")
       setApiError(true)
     }
   }
@@ -90,17 +91,20 @@ export default function Home() {
               <SvgContact />
             </div>
           </div>
-          <div className={messagSent ? '':'hidden'}>
+          <div className={messagSent ? '' : 'hidden'}>
             <p>
               <FormattedMessage defaultMessage='Wir werden uns schnellstmöglich bei dir melden.' />
             </p>
           </div>
-          <div className={apiError ? '':'hidden'}>
+          <div className={apiError ? '' : 'hidden'}>
             <p>
               <FormattedMessage defaultMessage='Etwas lief schief. Bitte melde dich unter info@delivery.plus' />
             </p>
           </div>
-          <form className={messagSent || apiError ? 'hidden':''} onSubmit={handleSubmit}>
+          <form
+            className={messagSent || apiError ? 'hidden' : ''}
+            onSubmit={handleSubmit}
+          >
             <div>
               <span className='uppercase text-sm text-gray-600 font-bold'>
                 <FormattedMessage defaultMessage='Name' />
@@ -148,13 +152,13 @@ export default function Home() {
               &#8226;{' '}
               {emailError
                 ? intl.formatMessage({
-                  defaultMessage: 'E-Mail Adresse ist nicht korrekt',
-                })
+                    defaultMessage: 'E-Mail Adresse ist nicht korrekt',
+                  })
                 : messagError
-                  ? intl.formatMessage({
+                ? intl.formatMessage({
                     defaultMessage: 'Bitte gebe eine Nachricht ein',
                   })
-                  : ''}
+                : ''}
             </div>
             <div className='mt-8'>
               <button className='uppercase text-sm font-bold tracking-wide bg-delivery text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline'>
