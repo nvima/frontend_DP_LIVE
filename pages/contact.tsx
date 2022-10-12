@@ -39,11 +39,8 @@ export default function Home() {
       email: emailInput,
       message: messageInput,
     }
-
     const JSONdata = JSON.stringify(data)
-
-    const endpoint = '/api/form'
-
+    const endpoint = 'https://btnyr0xuyk.execute-api.eu-central-1.amazonaws.com/DP_LIVE/messages/create'
     const options = {
       method: 'POST',
       headers: {
@@ -52,12 +49,15 @@ export default function Home() {
       body: JSONdata,
     }
 
-    // Send the form data to our forms API on Vercel and get a response.
-    /* const response = await fetch(endpoint, options) */
-
-    // Get the response data from server as JSON.
-    // If server returns the name submitted, that means the form works.
-    /* const result = await response.json() */
+    try{
+      const response = await fetch(endpoint, options)
+      const result = await response.json()
+      console.log('try')
+      console.log(result)
+    }catch(err){
+      console.log('catch')
+      console.log(err)
+    }
     console.log('sendData')
   }
 
