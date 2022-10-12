@@ -86,13 +86,21 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <img
-          className='pt-6 md:pt-1'
-          src='/order-system.png'
-          alt={intl.formatMessage({
-            defaultMessage: 'Restaurant Shop System auf allen Endgeräten',
-          })}
-        />
+        <div className='w-full'>
+          <picture>
+            <source srcSet='order-system.webp' type='image/webp' />
+            <source srcSet='/order-system.png' type='image/jpeg' />
+            <img
+              src='/order-system.png'
+              className='pt-6 md:pt-1 mx-auto'
+              height='273px'
+              width='500px'
+              alt={intl.formatMessage({
+                defaultMessage: 'Restaurant Shop System auf allen Endgeräten',
+              })}
+            />
+          </picture>
+        </div>
       </section>
       <section className='max-w-7xl mx-auto px-4 w-full text-center md:text-lg text-base'>
         <h2 className='font-extrabold md:text-5xl text-4xl text-center py-12 border-t font-mono'>
