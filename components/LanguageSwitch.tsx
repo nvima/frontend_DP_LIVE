@@ -1,4 +1,5 @@
-import { FormattedMessage, useIntl, defineMessages } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
+import {useRouter} from 'next/router';
 import { useState } from 'react'
 
 import { SvgDeFlag } from './SvgDeFlag'
@@ -9,6 +10,7 @@ import { SvgEsFlag } from './SvgEsFlag'
 export const LanguageSwitch = () => {
   const [languageSwitch, setLanguageSwitch] = useState<boolean>(false)
 
+  const router = useRouter()
   const intl = useIntl()
 
   return (
@@ -48,7 +50,7 @@ export const LanguageSwitch = () => {
         }
       >
         {process.env.NEXT_PUBLIC_LOCALE != 'en' && (
-          <a href='https://delivery.plus/' className='flex'>
+          <a href={'https://delivery.plus' + router.pathname } className='flex'>
             <SvgGbFlag />
             <p
               className='pl-2 my-auto hover:font-semibold before:content-[attr(data-before)] before:block before:font-semibold before:h-0 before:overflow-hidden before:invisible'
@@ -61,7 +63,7 @@ export const LanguageSwitch = () => {
           </a>
         )}
         {process.env.NEXT_PUBLIC_LOCALE != 'de' && (
-          <a href='https://de.delivery.plus/' className='flex'>
+          <a href={'https://de.delivery.plus' + router.pathname } className='flex'>
             <SvgDeFlag />
             <p
               className='pl-2 my-auto hover:font-semibold before:content-[attr(data-before)] before:block before:font-semibold before:h-0 before:overflow-hidden before:invisible'
@@ -74,7 +76,7 @@ export const LanguageSwitch = () => {
           </a>
         )}
         {process.env.NEXT_PUBLIC_LOCALE != 'es' && (
-          <a href='https://es.delivery.plus/' className='flex'>
+          <a href={'https://es.delivery.plus' + router.pathname } className='flex'>
             <SvgEsFlag />
             <p
               className='pl-2 my-auto hover:font-semibold before:content-[attr(data-before)] before:block before:font-semibold before:h-0 before:overflow-hidden before:invisible'
@@ -87,7 +89,7 @@ export const LanguageSwitch = () => {
           </a>
         )}
         {process.env.NEXT_PUBLIC_LOCALE != 'fr' && (
-          <a href='https://fr.delivery.plus/' className='flex'>
+          <a href={'https://fr.delivery.plus' + router.pathname } className='flex'>
             <SvgFrFlag />
             <p
               className='pl-2 my-auto hover:font-semibold before:content-[attr(data-before)] before:block before:font-semibold before:h-0 before:overflow-hidden before:invisible'

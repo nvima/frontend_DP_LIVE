@@ -13,15 +13,15 @@ export default function Home() {
       nofollow={true}
       openGraph={null}
     >
-      <div className='bg-white max-w-7xl overflow-hidden relative m-auto'>
-        <div className='md:pt-32 md:pb-52 pt-20 pb-24 z-10 flex items-center justify-between'>
-          <div className='px-6 m-auto flex flex-col-reverse lg:flex-row justify-between items-center relative'>
+      <div className='max-w-7xl m-auto'>
+        <div className='md:pt-32 md:pb-52 pt-20 pb-24 flex items-center justify-between'>
+          <div className='px-6 m-auto flex flex-col-reverse lg:flex-row justify-between items-center'>
             <div className='w-full mb-16 md:mb-8 text-center lg:text-left'>
               <h1 className='font-mono text-center lg:text-left text-5xl lg:text-8xl font-semibold mt-12 md:mt-0'>
                 <FormattedMessage defaultMessage='Seite nicht gefunden' />
               </h1>
             </div>
-            <div className='block w-full mx-auto md:mt-0 relative max-w-md lg:max-w-2xl'>
+            <div className='block w-full mx-auto md:mt-0 max-w-md lg:max-w-2xl'>
               <img src='/404.svg' />
             </div>
           </div>
