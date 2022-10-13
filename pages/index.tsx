@@ -71,16 +71,16 @@ export default function Home() {
             <FormattedMessage defaultMessage='14 Tage unverbindlich testen, erstelle deinen eigenen Shop.' />
           </p>
           <div className='flex mt-8'>
+            {/* <a */}
+            {/*   href='https://dashboard.delivery.plus/register' */}
+            {/*   className='mobile:ml-auto py-2 px-4 uppercase rounded-lg bg-delivery border-2 border-transparent text-white mr-4 hover:bg-delivery' */}
+            {/* > */}
+            {/*   <FormattedMessage defaultMessage='REGISTRIEREN' /> */}
+            {/* </a> */}
             <a
-              href='https://dashboard.delivery.plus/register'
-              className='mobile:ml-auto py-2 px-4 uppercase rounded-lg bg-delivery border-2 border-transparent text-white mr-4 hover:bg-delivery'
-            >
-              <FormattedMessage defaultMessage='REGISTRIEREN' />
-            </a>
-            <a
-              href='https://demo.delivery.plus'
+              href='https://d2qll721kemd59.cloudfront.net/'
               target='_blank'
-              className='mobile:mr-auto py-2 px-4 uppercase rounded-lg bg-transparent border-2 border-delivery text-delivery hover:bg-delivery hover:text-white'
+              className='mobile:mr-auto mobile:mx-auto py-2 px-4 uppercase rounded-lg bg-transparent border-2 border-delivery text-delivery hover:bg-delivery hover:text-white'
             >
               <FormattedMessage defaultMessage='DEMOSHOP' />
             </a>

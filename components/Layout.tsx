@@ -3,6 +3,7 @@ import Head from 'next/head'
 import * as React from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
 import Link from 'next/link'
+import { LanguageSwitch } from './LanguageSwitch'
 
 export default function Layout({
   title,
@@ -34,10 +35,10 @@ export default function Layout({
         openGraph={openGraph}
       />
 
-      <header className='border-b h-18 content-center align-middle w-full'>
-        <div className='flex justify-between items-center max-w-7xl mx-auto px-4 content-center align-middle h-full'>
+      <header className='border-b md:h-18 py-4 md:p-0 content-center align-middle w-full'>
+        <div className='md:flex grid grid-cols-2 justify-between items-center max-w-7xl mx-auto px-4 content-center align-middle h-full'>
           <Link href='/'>
-            <a>
+            <a className="order-1">
               <h2 className='cursor-pointer inline text-3xl font-extrabold leading-tight content-center align-middle'>
                 DELIVERY
                 <span className='text-delivery align-none transform -translate-y-4'>
@@ -46,57 +47,60 @@ export default function Layout({
               </h2>
             </a>
           </Link>
-          <nav className='md:block hidden font-semibold font-mono'>
+          <nav className='font-semibold font-mono md:pt-0 pt-4 md:order-2 order-3 col-span-2 mx-auto flex justify-between gap-8 md:w-auto w-full'>
             <Link href='/about'>
-              <a className='cursor-pointer mr-12 hover:text-delivery'>
+              <a className='cursor-pointer md:mx-12 hover:text-delivery'>
                 <FormattedMessage defaultMessage='Über uns' />
               </a>
             </Link>
             <Link href='/faq'>
-              <a className='cursor-pointer mr-12 hover:text-delivery'>
+              <a className='cursor-pointer md:mr-12 hover:text-delivery'>
                 <FormattedMessage defaultMessage='FAQ' />
               </a>
             </Link>
             <Link href='/contact'>
-              <a className='cursor-pointer mr-12 hover:text-delivery'>
+              <a className='cursor-pointer md:mr-12 hover:text-delivery'>
                 <FormattedMessage defaultMessage='Kontakt' />
               </a>
             </Link>
           </nav>
-          <a
-            href='https//dashboard.delivery.plus/'
-            className='font-mono md:inline hidden cursor-pointer bg-white py-2 px-4 rounded-lg bg-transparent border-2 border-delivery text-delivery hover:bg-delivery hover:text-white focus:outline-none focus:shadow-outline'
-          >
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-5 w-5 mr-1 inline'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1'
-              />
-            </svg>
-            <FormattedMessage defaultMessage='LOGIN' />
-          </a>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            className='md:hidden h-6 w-6'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='2'
-              d='M4 6h16M4 12h16M4 18h16'
-            />
-          </svg>
+          <div className='flex justify-between md:order-3 order-2'>
+            <LanguageSwitch />
+            {/* <a */}
+            {/*   href='https//dashboard.delivery.plus/' */}
+            {/*   className='font-mono md:inline hidden cursor-pointer bg-white py-2 px-4 rounded-lg bg-transparent border-2 border-delivery text-delivery hover:bg-delivery hover:text-white focus:outline-none focus:shadow-outline' */}
+            {/* > */}
+            {/*   <svg */}
+            {/*     xmlns='http://www.w3.org/2000/svg' */}
+            {/*     className='h-5 w-5 mr-1 inline' */}
+            {/*     fill='none' */}
+            {/*     viewBox='0 0 24 24' */}
+            {/*     stroke='currentColor' */}
+            {/*   > */}
+            {/*     <path */}
+            {/*       strokeLinecap='round' */}
+            {/*       strokeLinejoin='round' */}
+            {/*       strokeWidth='2' */}
+            {/*       d='M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1' */}
+            {/*     /> */}
+            {/*   </svg> */}
+            {/*   <FormattedMessage defaultMessage='LOGIN' /> */}
+            {/* </a> */}
+          </div>
+          {/* <svg */}
+          {/*   xmlns='http://www.w3.org/2000/svg' */}
+          {/*   className='md:hidden h-6 w-6' */}
+          {/*   fill='none' */}
+          {/*   viewBox='0 0 24 24' */}
+          {/*   stroke='currentColor' */}
+          {/* > */}
+          {/*   <path */}
+          {/*     strokeLinecap='round' */}
+          {/*     strokeLinejoin='round' */}
+          {/*     strokeWidth='2' */}
+          {/*     d='M4 6h16M4 12h16M4 18h16' */}
+          {/*   /> */}
+          {/* </svg> */}
         </div>
       </header>
 
