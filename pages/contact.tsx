@@ -91,7 +91,7 @@ export default function Home() {
       noindex={false}
       nofollow={false}
       openGraph={{
-        url: getUrl(),
+        url: getUrl() + 'contact',
         type: 'website',
         locale: process.env.NEXT_PUBLIC_LOCALE,
         site_name: intl.formatMessage({

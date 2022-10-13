@@ -27,7 +27,7 @@ export default function Home() {
       noindex={false}
       nofollow={false}
       openGraph={{
-        url: getUrl(),
+        url: getUrl() + 'faq',
         type: 'website',
         locale: process.env.NEXT_PUBLIC_LOCALE,
         site_name: intl.formatMessage({

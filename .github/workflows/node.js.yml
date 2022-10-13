@@ -42,7 +42,7 @@ jobs:
       run: aws s3 rm s3://dp-live-delivery/de/ --recursive
     - run: aws s3 sync --cache-control 'max-age=31536000' ./out/_next/ s3://dp-live-delivery/de/_next/
     - run: for file in $(find ./out -name "*.html"); do mv "$file" "${file%%.html}"; done
-    - run: aws s3 sync --cache-control 'max-age=31536000' --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/de/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
+    - run: aws s3 sync --cache-control 'no-cache' --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/de/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
     - run: aws s3 sync --cache-control 'max-age=31536000' ./out/ s3://dp-live-delivery/de/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
     - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_DE}} --paths '/*'; 
 
@@ -61,7 +61,7 @@ jobs:
       run: aws s3 rm s3://dp-live-delivery/en/ --recursive
     - run: aws s3 sync --cache-control 'max-age=31536000' ./out/_next/ s3://dp-live-delivery/en/_next/
     - run: for file in $(find ./out -name "*.html"); do mv "$file" "${file%%.html}"; done
-    - run: aws s3 sync --cache-control 'max-age=31536000' --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/en/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
+    - run: aws s3 sync --cache-control 'no-cache' --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/en/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
     - run: aws s3 sync --cache-control 'max-age=31536000' ./out/ s3://dp-live-delivery/en/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
     - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_EN}} --paths '/*'; 
       
@@ -78,7 +78,7 @@ jobs:
       run: aws s3 rm s3://dp-live-delivery/fr/ --recursive
     - run: aws s3 sync --cache-control 'max-age=31536000' ./out/_next/ s3://dp-live-delivery/fr/_next/
     - run: for file in $(find ./out -name "*.html"); do mv "$file" "${file%%.html}"; done
-    - run: aws s3 sync --cache-control 'max-age=31536000' --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/fr/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
+    - run: aws s3 sync --cache-control 'no-cache' --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/fr/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
     - run: aws s3 sync --cache-control 'max-age=31536000' ./out/ s3://dp-live-delivery/fr/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
     - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_FR}} --paths '/*'; 
       
@@ -95,6 +95,6 @@ jobs:
       run: aws s3 rm s3://dp-live-delivery/es/ --recursive
     - run: aws s3 sync --cache-control 'max-age=31536000' ./out/_next/ s3://dp-live-delivery/es/_next/
     - run: for file in $(find ./out -name "*.html"); do mv "$file" "${file%%.html}"; done
-    - run: aws s3 sync --cache-control 'max-age=31536000' --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/es/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
+    - run: aws s3 sync --cache-control 'no-cache' --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-delivery/es/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
     - run: aws s3 sync --cache-control 'max-age=31536000' ./out/ s3://dp-live-delivery/es/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
     - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_ID_ES}} --paths '/*'; 
