@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FormattedMessage, useIntl } from 'react-intl'
+import { useIntl } from 'react-intl'
 
 import Layout from '../components/Layout'
 
@@ -8,8 +8,8 @@ export default function Home() {
 
   return (
     <Layout
-      title={intl.formatMessage({ defaultMessage: 'About' })}
-      description={intl.formatMessage({ defaultMessage: 'Description' })}
+      title={intl.formatMessage({ defaultMessage: 'Impressum' })}
+      description={intl.formatMessage({ defaultMessage: 'Impressum' })}
       noindex={true}
       nofollow={true}
       openGraph={null}

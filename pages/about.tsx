@@ -32,8 +32,7 @@ export default function Home() {
         type: 'website',
         locale: process.env.NEXT_PUBLIC_LOCALE,
         site_name: intl.formatMessage({
-          defaultMessage:
-            'Delivery+ | Über uns',
+          defaultMessage: 'Delivery+ | Über uns',
         }),
         images: {
           url: getUrl() + 'og-delivery.jpg',
@@ -49,16 +48,19 @@ export default function Home() {
       <section className='max-w-7xl mx-auto px-4 flex flex-col md:flex-row-reverse pb-20'>
         <div className='flex-1'>
           <h1 className='text-center md:text-left font-mono font-extrabold md:text-5xl text-4xl py-6 md:pt-36 pt-12'>
-            <FormattedMessage defaultMessage='Unsere Philosophie' />
+            <FormattedMessage defaultMessage='Über uns' />
           </h1>
           <div className='text-center md:text-left md:text-xl text-lg'>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-            et dolore magna aliquyam erat, sed diam voluptua.
+            <FormattedMessage
+              defaultMessage={
+                'Von Beginn an hatten wir die Überzeugung, ' +
+                'dass jeder Lieferservice die Möglichkeit haben soll, ihr Essen ohne Provision zu verkaufen. ' +
+                'Es gibt zwar Alternativmodelle, die ein Bestellsystem ohne Provision anbieten, ' +
+                'meistens sind diese Systeme veraltet, zu teuer oder benötigen das manuelle Anlegen vom Anbieter. ' +
+                'Das Ziel war von Anfang das Restaurants selber Ihre Homepage, ' +
+                'Öffnungszeiten oder Produkte pflegen können und eine moderne Website erhalten, die dem heutigen Standard entsprechen.'
+              }
+            />
           </div>
         </div>
         <div className='flex-1 p-4 md:pt-24'>
