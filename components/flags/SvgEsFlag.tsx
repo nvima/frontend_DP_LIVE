@@ -5,7 +5,7 @@ export const SvgEsFlag = () => {
       width='512'
       height='512'
       viewBox='0 0 512 512'
-      className="w-8 h-8"
+      className="w-8 h-8 us:w-7 us:h-7"
     >
       <mask id='a'>
         <circle cx='256' cy='256' r='256' fill='#fff' />

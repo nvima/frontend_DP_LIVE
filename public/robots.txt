@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://de.delivery.plus
+Host: https://se.delivery.plus
 
 # Sitemaps
-Sitemap: https://de.delivery.plus/sitemap.xml
+Sitemap: https://se.delivery.plus/sitemap.xml

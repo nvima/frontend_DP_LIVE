@@ -14,6 +14,7 @@ module.exports = {
       },
       screens:{
         "mobile": {'max': '767px'},
+        "us": {'max': '350px'},
       },
       colors: {
         'delivery': '#4338CA',

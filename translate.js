@@ -8,9 +8,18 @@ async function go() {
   const originalFile = 'de.json'
   const originalLang = 'de'
   const translations = [
+    { file: 'dk.json', lang: 'da' },
     { file: 'en.json', lang: 'en' },
-    { file: 'fr.json', lang: 'fr' },
     { file: 'es.json', lang: 'es' },
+    { file: 'fr.json', lang: 'fr' },
+    { file: 'gr.json', lang: 'el' },
+    { file: 'hr.json', lang: 'hr' },
+    { file: 'it.json', lang: 'it' },
+    { file: 'nl.json', lang: 'nl' },
+    { file: 'pl.json', lang: 'pl' },
+    { file: 'pt.json', lang: 'pt' },
+    { file: 'ro.json', lang: 'ro' },
+    { file: 'se.json', lang: 'sv' },
   ]
 
   const originalContent = JSON.parse(

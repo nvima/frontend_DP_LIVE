@@ -47,7 +47,7 @@ export default function Layout({
               </h2>
             </a>
           </Link>
-          <nav className='font-semibold font-mono md:pt-0 pt-4 md:order-2 order-3 col-span-2 mx-auto flex justify-between gap-8 md:w-auto w-full'>
+          <nav className='font-semibold font-mono md:pt-0 pt-4 md:order-2 order-3 col-span-2 mx-auto flex justify-between gap-8 mobile:gap-4 md:w-auto w-full'>
             <Link href='/about'>
               <a className='cursor-pointer md:mx-12 hover:text-delivery'>
                 <FormattedMessage defaultMessage='Über uns' />

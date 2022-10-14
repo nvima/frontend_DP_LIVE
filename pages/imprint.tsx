@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useIntl } from 'react-intl'
+import {FormattedMessage, useIntl} from 'react-intl'
 
 import Layout from '../components/Layout'
 
@@ -8,40 +8,45 @@ export default function Home() {
 
   return (
     <Layout
-      title={intl.formatMessage({ defaultMessage: 'Impressum' })}
-      description={intl.formatMessage({ defaultMessage: 'Impressum' })}
+      title={intl.formatMessage({defaultMessage: 'Impressum'})}
+      description={intl.formatMessage({defaultMessage: 'Impressum'})}
       noindex={true}
       nofollow={true}
       openGraph={null}
     >
       <section className='max-w-7xl mx-auto px-4 p-4 pb-20'>
         <h1 className='font-extrabold md:text-5xl text-4xl font-mono py-12'>
-          Impressum
+          <FormattedMessage defaultMessage='Impressum' />
         </h1>
         <h2 className='py-4 font-semibold text-lg'>
-          Angaben gem&auml;&szlig; &sect; 5 TMG
+          <FormattedMessage defaultMessage='Angaben gemäss § 5 TMG' />
         </h2>
         <p>Delivery+</p>
-        <p>Bestellsystem f&uuml;r Restaurant &amp; Lieferdienste</p>
-        <p>Patrick Mirwald</p>
-        <p>Hubertusweg 7</p>
-        <p>68229 Mannheim</p>
-
-        <h2 className='py-4 font-semibold text-lg'>Kontakt</h2>
-        <p>Telefon: +4962148195092</p>
+        <p>Bgm.-Butscher-Str. 5</p>
+        <p>67065 Ludwigshafen</p>
+        <p>
+          <FormattedMessage defaultMessage='Deutschland' />
+        </p>
+        <h2 className='py-4 font-semibold text-lg'>
+          <FormattedMessage defaultMessage='Kontakt' />
+        </h2>
         <p>E-Mail: info@delivery.plus</p>
 
-        <h2 className='py-4 font-semibold text-lg'>Umsatzsteuer-ID</h2>
+        <h2 className='py-4 font-semibold text-lg'>
+          <FormattedMessage defaultMessage='Umsatzsteuer-ID' />
+        </h2>
         <p>
-          Umsatzsteuer-Identifikationsnummer gem&auml;&szlig; &sect; 27 a
-          Umsatzsteuergesetz:
+          <FormattedMessage defaultMessage='Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:' />
         </p>
-        <p>- in Beantragung -</p>
-
-        <h2 className='py-4 font-semibold text-lg'>EU-Streitschlichtung</h2>
         <p>
-          Die Europ&auml;ische Kommission stellt eine Plattform zur
-          Online-Streitbeilegung (OS) bereit:{' '}
+          <FormattedMessage defaultMessage='- in Beantragung -' />
+        </p>
+
+        <h2 className='py-4 font-semibold text-lg'>
+          <FormattedMessage defaultMessage='EU-Streitschlichtung' />
+        </h2>
+        <p>
+          <FormattedMessage defaultMessage='Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:' />{' '}
           <a
             className='underline'
             href='https://ec.europa.eu/consumers/odr/'
@@ -50,7 +55,8 @@ export default function Home() {
           >
             https://ec.europa.eu/consumers/odr/
           </a>
-          . Unsere E-Mail-Adresse finden Sie oben im Impressum.
+          .{' '}
+          <FormattedMessage defaultMessage='Unsere E-Mail-Adresse finden Sie oben im Impressum.' />
         </p>
       </section>
     </Layout>

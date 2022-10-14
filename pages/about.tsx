@@ -9,13 +9,7 @@ export default function Home() {
   function getUrl() {
     return process.env.NEXT_PUBLIC_LOCALE == 'en'
       ? 'https://delivery.plus/'
-      : process.env.NEXT_PUBLIC_LOCALE == 'de'
-        ? 'https://de.delivery.plus/'
-        : process.env.NEXT_PUBLIC_LOCALE == 'fr'
-          ? 'https://fr.delivery.plus/'
-          : process.env.NEXT_PUBLIC_LOCALE == 'es'
-            ? 'https://es.delivery.plus/'
-            : 'https://delivery.plus/'
+      : `https://${process.env.NEXT_PUBLIC_LOCALE}.delivery.plus`
   }
 
   return (

@@ -55,6 +55,69 @@ export async function polyfill(locale: string = '') {
           )
         )
         break
+      case 'hr':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-pluralrules" */ '@formatjs/intl-pluralrules/locale-data/hr'
+          )
+        )
+        break
+      case 'it':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-pluralrules" */ '@formatjs/intl-pluralrules/locale-data/it'
+          )
+        )
+        break
+      case 'nl':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-pluralrules" */ '@formatjs/intl-pluralrules/locale-data/nl'
+          )
+        )
+        break
+      case 'pl':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-pluralrules" */ '@formatjs/intl-pluralrules/locale-data/pl'
+          )
+        )
+        break
+      case 'pt':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-pluralrules" */ '@formatjs/intl-pluralrules/locale-data/pt'
+          )
+        )
+        break
+      case 'ro':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-pluralrules" */ '@formatjs/intl-pluralrules/locale-data/ro'
+          )
+        )
+        break
+      case 'se':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-pluralrules" */ '@formatjs/intl-pluralrules/locale-data/sv'
+          )
+        )
+        break
+      case 'dk':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-pluralrules" */ '@formatjs/intl-pluralrules/locale-data/da'
+          )
+        )
+        break
+      case 'gr':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-pluralrules" */ '@formatjs/intl-pluralrules/locale-data/el'
+          )
+        )
+        break
     }
   }
 
@@ -65,7 +128,7 @@ export async function polyfill(locale: string = '') {
     )
   }
 
-  if ((Intl.NumberFormat as any).polyfilled) {
+  if (shouldPolyfillNumberFormat() && (Intl.NumberFormat as any).polyfilled) {
     switch (locale) {
       default:
         dataPolyfills.push(
@@ -92,6 +155,69 @@ export async function polyfill(locale: string = '') {
         dataPolyfills.push(
           import(
             /* webpackChunkName: "intl-numberformat" */ '@formatjs/intl-numberformat/locale-data/es'
+          )
+        )
+        break
+      case 'hr':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-numberformat" */ '@formatjs/intl-numberformat/locale-data/hr'
+          )
+        )
+        break
+      case 'it':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-numberformat" */ '@formatjs/intl-numberformat/locale-data/it'
+          )
+        )
+        break
+      case 'nl':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-numberformat" */ '@formatjs/intl-numberformat/locale-data/nl'
+          )
+        )
+        break
+      case 'pl':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-numberformat" */ '@formatjs/intl-numberformat/locale-data/pl'
+          )
+        )
+        break
+      case 'pt':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-numberformat" */ '@formatjs/intl-numberformat/locale-data/pt'
+          )
+        )
+        break
+      case 'ro':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-numberformat" */ '@formatjs/intl-numberformat/locale-data/ro'
+          )
+        )
+        break
+      case 'se':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-numberformat" */ '@formatjs/intl-numberformat/locale-data/sv'
+          )
+        )
+        break
+      case 'dk':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-numberformat" */ '@formatjs/intl-numberformat/locale-data/da'
+          )
+        )
+        break
+      case 'gr':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-numberformat" */ '@formatjs/intl-numberformat/locale-data/el'
           )
         )
         break
@@ -136,6 +262,69 @@ export async function polyfill(locale: string = '') {
           )
         )
         break
+      case 'hr':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-datetimeformat" */ '@formatjs/intl-datetimeformat/locale-data/hr'
+          )
+        )
+        break
+      case 'it':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-datetimeformat" */ '@formatjs/intl-datetimeformat/locale-data/it'
+          )
+        )
+        break
+      case 'nl':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-datetimeformat" */ '@formatjs/intl-datetimeformat/locale-data/nl'
+          )
+        )
+        break
+      case 'pl':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-datetimeformat" */ '@formatjs/intl-datetimeformat/locale-data/pl'
+          )
+        )
+        break
+      case 'pt':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-datetimeformat" */ '@formatjs/intl-datetimeformat/locale-data/pt'
+          )
+        )
+        break
+      case 'ro':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-datetimeformat" */ '@formatjs/intl-datetimeformat/locale-data/ro'
+          )
+        )
+        break
+      case 'se':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-datetimeformat" */ '@formatjs/intl-datetimeformat/locale-data/sv'
+          )
+        )
+        break
+      case 'dk':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-datetimeformat" */ '@formatjs/intl-datetimeformat/locale-data/da'
+          )
+        )
+        break
+      case 'gr':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-datetimeformat" */ '@formatjs/intl-datetimeformat/locale-data/el'
+          )
+        )
+        break
     }
   }
 
@@ -173,6 +362,69 @@ export async function polyfill(locale: string = '') {
         dataPolyfills.push(
           import(
             /* webpackChunkName: "intl-relativetimeformat" */ '@formatjs/intl-relativetimeformat/locale-data/es'
+          )
+        )
+        break
+      case 'hr':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-relativetimeformat" */ '@formatjs/intl-relativetimeformat/locale-data/hr'
+          )
+        )
+        break
+      case 'it':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-relativetimeformat" */ '@formatjs/intl-relativetimeformat/locale-data/it'
+          )
+        )
+        break
+      case 'nl':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-relativetimeformat" */ '@formatjs/intl-relativetimeformat/locale-data/nl'
+          )
+        )
+        break
+      case 'pl':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-relativetimeformat" */ '@formatjs/intl-relativetimeformat/locale-data/pl'
+          )
+        )
+        break
+      case 'pt':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-relativetimeformat" */ '@formatjs/intl-relativetimeformat/locale-data/pt'
+          )
+        )
+        break
+      case 'ro':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-relativetimeformat" */ '@formatjs/intl-relativetimeformat/locale-data/ro'
+          )
+        )
+        break
+      case 'se':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-relativetimeformat" */ '@formatjs/intl-relativetimeformat/locale-data/sv'
+          )
+        )
+        break
+      case 'dk':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-relativetimeformat" */ '@formatjs/intl-relativetimeformat/locale-data/da'
+          )
+        )
+        break
+      case 'gr':
+        dataPolyfills.push(
+          import(
+            /* webpackChunkName: "intl-relativetimeformat" */ '@formatjs/intl-relativetimeformat/locale-data/el'
           )
         )
         break

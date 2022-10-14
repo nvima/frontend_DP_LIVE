@@ -8,9 +8,23 @@ import { polyfill } from '../polyfills'
 import '../styles/globals.css'
 import '../styles/styles.css'
 
-function MyApp({ Component, pageProps, locale = process.env.NEXT_PUBLIC_LOCALE, messages }) {
+function MyApp({
+  Component,
+  pageProps,
+  locale = process.env.NEXT_PUBLIC_LOCALE,
+  messages,
+}) {
+  if (locale == 'gr') {
+    locale = 'el'
+  }
+  if (locale == 'dk') {
+    locale = 'da'
+  }
+  if (locale == 'se') {
+    locale = 'sv'
+  }
   return (
-    <IntlProvider locale={locale} defaultLocale="de" messages={messages}>
+    <IntlProvider locale={locale} defaultLocale='de' messages={messages}>
       <DefaultSeo />
       <Component {...pageProps} />
     </IntlProvider>
@@ -40,11 +54,38 @@ function getMessages(locales: string | string[] = ['de']) {
       case 'en':
         langBundle = import('../compiled-lang/en.json')
         break
+      case 'es':
+        langBundle = import('../compiled-lang/es.json')
+        break
       case 'fr':
         langBundle = import('../compiled-lang/fr.json')
         break
-      case 'es':
-        langBundle = import('../compiled-lang/es.json')
+      case 'dk':
+        langBundle = import('../compiled-lang/dk.json')
+        break
+      case 'gr':
+        langBundle = import('../compiled-lang/gr.json')
+        break
+      case 'hr':
+        langBundle = import('../compiled-lang/hr.json')
+        break
+      case 'it':
+        langBundle = import('../compiled-lang/it.json')
+        break
+      case 'nl':
+        langBundle = import('../compiled-lang/nl.json')
+        break
+      case 'pl':
+        langBundle = import('../compiled-lang/pt.json')
+        break
+      case 'pt':
+        langBundle = import('../compiled-lang/pt.json')
+        break
+      case 'ro':
+        langBundle = import('../compiled-lang/ro.json')
+        break
+      case 'se':
+        langBundle = import('../compiled-lang/se.json')
         break
       default:
         break

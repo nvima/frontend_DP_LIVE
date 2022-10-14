@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FormattedMessage, useIntl, defineMessages } from 'react-intl'
+import {FormattedMessage, useIntl, defineMessages} from 'react-intl'
 import Link from 'next/link'
 
 import Layout from '../components/Layout'
@@ -22,13 +22,7 @@ export default function Home() {
   function getUrl() {
     return process.env.NEXT_PUBLIC_LOCALE == 'en'
       ? 'https://delivery.plus/'
-      : process.env.NEXT_PUBLIC_LOCALE == 'de'
-        ? 'https://de.delivery.plus/'
-        : process.env.NEXT_PUBLIC_LOCALE == 'fr'
-          ? 'https://fr.delivery.plus/'
-          : process.env.NEXT_PUBLIC_LOCALE == 'es'
-            ? 'https://es.delivery.plus/'
-            : 'https://delivery.plus/'
+      : `https://${process.env.NEXT_PUBLIC_LOCALE}.delivery.plus`
   }
 
   return (
@@ -63,8 +57,8 @@ export default function Home() {
       }}
     >
       <section className='max-w-7xl mx-auto px-4 w-full flex md:flex-row flex-col items-center md:py-32 py-16'>
-        <div>
-          <h1 className='font-mono lg:text-6xl md:text-4xl text-5xl font-extrabold text-center md:text-left py-6 whitespace-normal'>
+        <div className="us:w-screen">
+          <h1 className='font-mono lg:text-6xl text-4xl us:text-3xl font-extrabold text-center md:text-left py-6 mobile:break-words'>
             {h1()}
           </h1>
           <p className='text-center md:text-left md:text-xl text-lg'>
@@ -2175,7 +2169,7 @@ export default function Home() {
                   d='M991.95463,303.91244c0-100.98931-77.45624-183.87364-176.20012-192.52321,5.63007-.49316,11.32507-.76,17.08312-.76,106.74741,0,193.28323,86.53582,193.28323,193.28323S939.585,497.19568,832.83763,497.19568c-5.74935,0-11.43447-.27032-17.05607-.7624C914.51245,487.771,991.95463,404.89246,991.95463,303.91244Z'
                   transform='translate(-158.03543 -93.12723)'
                   opacity='0.1'
-                  style={{ isolation: 'isolate' }}
+                  style={{isolation: 'isolate'}}
                 />
                 <path
                   d='M386.198,761.25205A210.59024,210.59024,0,1,1,541.92313,692.32l43.97806,49.29889-21.94589,9.309c-33.94983,14.40053-67.1723.388-85.8193-10.79516A210.856,210.856,0,0,1,386.198,761.25205Zm0-386.56647c-97.15687,0-176.20012,79.04325-176.20012,176.20012,0,97.15735,79.04325,176.20012,176.20012,176.20012a176.3427,176.3427,0,0,0,84.70584-21.66657l9.39476-5.16211,8.73508,6.2155c6.36613,4.52913,18.92107,12.32711,33.3359,15.25183l-27.67378-31.02129,12.13072-11.39955a174.54124,174.54124,0,0,0,55.5716-128.41793C562.39808,453.72883,483.35484,374.68558,386.198,374.68558Z'
@@ -2191,7 +2185,7 @@ export default function Home() {
                   d='M227.08084,549.90929c0-100.98932,77.45624-183.87364,176.20012-192.52322-5.63007-.49315-11.32507-.76-17.08312-.76-106.74741,0-193.28323,86.53582-193.28323,193.28324s86.53582,193.28323,193.28323,193.28323c5.74935,0,11.43447-.27032,17.05607-.7624C304.523,733.76785,227.08084,650.88931,227.08084,549.90929Z'
                   transform='translate(-158.03543 -93.12723)'
                   opacity='0.1'
-                  style={{ isolation: 'isolate' }}
+                  style={{isolation: 'isolate'}}
                 />
                 <path
                   d='M876.97323,242.08764c-12.64621-21.36818-37.66572-22.364-37.66572-22.364s-24.38009-3.1177-40.01977,29.4263c-14.57742,30.33368-34.69612,59.62147-3.23894,66.72236l5.68208-17.68518,3.51888,19.00182a123.082,123.082,0,0,0,13.45936.23c33.68809-1.08765,65.77092.31822,64.7379-11.77049C882.07379,289.57823,889.14142,262.6481,876.97323,242.08764Z'
