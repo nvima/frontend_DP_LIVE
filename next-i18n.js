@@ -25,7 +25,7 @@ module.exports = {
       defaultLocale: 'da',
     },
     {
-      domain: 'delivery.plus',
+      domain: 'www.delivery.plus',
       defaultLocale: 'en',
     },
     {

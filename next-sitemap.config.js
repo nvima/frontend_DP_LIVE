@@ -2,7 +2,7 @@
 module.exports = {
   siteUrl:
     process.env.NEXT_PUBLIC_LOCALE == 'en'
-      ? 'https://delivery.plus'
+      ? 'https://www.delivery.plus'
       : `https://${process.env.NEXT_PUBLIC_LOCALE}.delivery.plus`,
   generateRobotsTxt: true,
   generateIndexSitemap: false,
@@ -32,7 +32,7 @@ function buildAltRef() {
       const altRef = {
         href:
           lang == 'en'
-            ? 'https://delivery.plus'
+            ? 'https://www.delivery.plus'
             : `https://${lang}.delivery.plus`,
         hreflang: lang,
       }

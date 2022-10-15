@@ -96,7 +96,7 @@ export const LanguageSwitch = () => {
           </a>
         )}
         {process.env.NEXT_PUBLIC_LOCALE != 'en' && (
-          <a href={'https://delivery.plus' + router.pathname} className='flex'>
+          <a href={'https://www.delivery.plus' + router.pathname} className='flex'>
             <SvgGbFlag />
             <p
               className='pl-2 my-auto hover:font-semibold before:content-[attr(data-before)] before:block before:font-semibold before:h-0 before:overflow-hidden before:invisible'

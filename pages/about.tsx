@@ -8,7 +8,7 @@ export default function Home() {
 
   function getUrl() {
     return process.env.NEXT_PUBLIC_LOCALE == 'en'
-      ? 'https://delivery.plus/'
+      ? 'https://www.delivery.plus/'
       : `https://${process.env.NEXT_PUBLIC_LOCALE}.delivery.plus`
   }
 
