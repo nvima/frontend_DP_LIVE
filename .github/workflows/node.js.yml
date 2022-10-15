@@ -41,11 +41,11 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-central-1
     - name: Deploy to S3
-      # run: aws s3 rm s3://dp-live-websites_static/en/ --recursive
-      run: aws s3 sync --cache-control 'max-age=31536000' ./out/_next/ s3://dp-live-websites_static/en/_next/
+      run: aws s3 rm s3://dp-live-websites-static/en/ --recursive
+    - run: aws s3 sync --cache-control 'max-age=31536000' ./out/_next/ s3://dp-live-websites-static/en/_next/
     - run: for file in $(find ./out -name "*.html"); do mv "$file" "${file%%.html}"; done
-    - run: aws s3 sync --cache-control 'no-cache' --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-websites_static/en/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
-    - run: aws s3 sync --cache-control 'max-age=31536000' ./out/ s3://dp-live-websites_static/en/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
+    - run: aws s3 sync --cache-control 'no-cache' --content-type "text/html" --metadata-directive REPLACE ./out/ s3://dp-live-websites-static/en/ --exclude "*.jpg" --exclude "*.png" --exclude "*.jpeg" --exclude "_next/*" --exclude "*.svg"
+    - run: aws s3 sync --cache-control 'max-age=31536000' ./out/ s3://dp-live-websites-static/en/ --exclude "*.*" --include "*.jpg" --include "*.png" --include "*.jpeg" --include "*.svg"
     - run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id E2F3Y408MR6K28 --paths '/*'; 
 
     # - name: Build DE
