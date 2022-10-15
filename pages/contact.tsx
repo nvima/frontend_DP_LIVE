@@ -1,8 +1,8 @@
-import { FormEvent, ChangeEvent, useState } from 'react'
-import { FormattedMessage, useIntl } from 'react-intl'
+import {FormEvent, ChangeEvent, useState} from 'react'
+import {FormattedMessage, useIntl} from 'react-intl'
 
 import Layout from '../components/Layout'
-import { SvgContact } from '../components/SvgContact'
+import {SvgContact} from '../components/SvgContact'
 
 export default function Home() {
   const intl = useIntl()
@@ -135,11 +135,16 @@ export default function Home() {
             onSubmit={handleSubmit}
           >
             <div>
-              <span className='uppercase text-sm text-gray-600 font-bold'>
+              <label
+                htmlFor='name'
+                className='uppercase text-sm text-gray-600 font-bold'
+              >
                 <FormattedMessage defaultMessage='Name' />
-              </span>
+              </label>
               <input
                 className='w-full bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline'
+                name='name'
+                id='name'
                 type='text'
                 value={nameInput}
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -148,12 +153,17 @@ export default function Home() {
               />
             </div>
             <div className='mt-8'>
-              <span className='uppercase text-sm text-gray-600 font-bold'>
+              <label
+                htmlFor='email'
+                className='uppercase text-sm text-gray-600 font-bold'
+              >
                 <FormattedMessage defaultMessage='Email' />
-              </span>
+              </label>
               <input
                 className='w-full bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline'
                 type='text'
+                name='email'
+                id='email'
                 value={emailInput}
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setEmailInput(e.target.value)
@@ -161,10 +171,14 @@ export default function Home() {
               />
             </div>
             <div className='mt-8'>
-              <span className='uppercase text-sm text-gray-600 font-bold'>
+              <label 
+                htmlFor='message'
+                className='uppercase text-sm text-gray-600 font-bold'>
                 <FormattedMessage defaultMessage='Nachricht' />
-              </span>
+              </label>
               <textarea
+                name='message'
+                id='message'
                 className='w-full h-32 bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline'
                 value={messageInput}
                 onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
@@ -181,13 +195,13 @@ export default function Home() {
               &#8226;{' '}
               {emailError
                 ? intl.formatMessage({
-                  defaultMessage: 'E-Mail Adresse ist nicht korrekt',
-                })
+                    defaultMessage: 'E-Mail Adresse ist nicht korrekt',
+                  })
                 : messagError
-                  ? intl.formatMessage({
+                ? intl.formatMessage({
                     defaultMessage: 'Bitte gebe eine Nachricht ein',
                   })
-                  : ''}
+                : ''}
             </div>
             <div className='mt-8'>
               <button className='uppercase text-sm font-bold tracking-wide bg-delivery text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline'>

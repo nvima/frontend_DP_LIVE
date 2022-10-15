@@ -72,9 +72,9 @@ export default function Home() {
                 <p className='p-1'>
                   <FormattedMessage defaultMessage='Oktober 2021' />
                 </p>
-                <h3 className='font-semibold text-lg p-1'>
+                <p className='font-semibold text-lg p-1'>
                   <FormattedMessage defaultMessage='Idee' />
-                </h3>
+                </p>
               </div>
             </div>
 
@@ -91,9 +91,9 @@ export default function Home() {
                 <p className='p-1'>
                   <FormattedMessage defaultMessage='Dezember 2021' />
                 </p>
-                <h3 className='font-semibold text-lg p-1'>
+                <p className='font-semibold text-lg p-1'>
                   <FormattedMessage defaultMessage='Erster Demoshop' />
-                </h3>
+                </p>
               </div>
             </div>
 
@@ -110,9 +110,9 @@ export default function Home() {
                 <p className='p-1'>
                   <FormattedMessage defaultMessage='Mitte 2022' />
                 </p>
-                <h3 className='font-semibold text-lg p-1'>
+                <p className='font-semibold text-lg p-1'>
                   <FormattedMessage defaultMessage='Vollzeit: Entwicklung von Delivery+' />
-                </h3>
+                </p>
               </div>
             </div>
 
@@ -129,9 +129,9 @@ export default function Home() {
                 <p className='p-1'>
                   <FormattedMessage defaultMessage='Voraussichtlich Ende 2022' />
                 </p>
-                <h3 className='font-semibold text-lg p-1'>
+                <p className='font-semibold text-lg p-1'>
                   <FormattedMessage defaultMessage='Ersten Beta Tests' />
-                </h3>
+                </p>
               </div>
             </div>
 
@@ -148,9 +148,9 @@ export default function Home() {
                 <p className='p-1'>
                   <FormattedMessage defaultMessage='Voraussichtlich Anfang 2023' />
                 </p>
-                <h3 className='font-semibold text-lg p-1'>
+                <p className='font-semibold text-lg p-1'>
                   <FormattedMessage defaultMessage='Liveschaltung' />
-                </h3>
+                </p>
               </div>
             </div>
           </div>
