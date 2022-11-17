@@ -6,7 +6,7 @@ module.exports = {
       : `https://${process.env.NEXT_PUBLIC_LOCALE}.delivery.plus`,
   generateRobotsTxt: true,
   generateIndexSitemap: false,
-  exclude: ['/404', '/privacy-policy', '/imprint'],
+  exclude: ['/404', '/privacy-policy', '/legal-notice'],
   alternateRefs: buildAltRef(),
 }
 
