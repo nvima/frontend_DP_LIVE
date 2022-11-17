@@ -9,7 +9,7 @@
     "extract:i18n": "formatjs extract '{pages,components}/*.{js,ts,tsx}' --format simple --id-interpolation-pattern '[sha512:contenthash:base64:6]' --out-file lang/de.json",
     "compile:i18n": "formatjs compile-folder --ast --format simple lang compiled-lang",
     "start": "next start",
-    "translate": "npm run extract:i18n && node translate.js && npm run compile:i18n"
+    "translate": "npm run extract:i18n && node translate.js && node translate_deepl.js && npm run compile:i18n"
   },
   "dependencies": {
     "@formatjs/cli": "^5.1.1",
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@types/node": "18.8.2",
     "@vitalets/google-translate-api": "^8.0.0",
+    "deepl-node": "^1.7.1",
     "fs": "0.0.1-security",
     "next-sitemap": "^3.1.24",
     "prettier": "^2.7.1",

@@ -1,25 +1,28 @@
-const translate = require('@vitalets/google-translate-api')
+const deepl = require('deepl-node');
+const translate = new deepl.Translator(process.env.DEEPL_AUTH)
 const fs = require('fs')
+console.log("STARTING DEEPL TRANSLATIONS")
 
+/* deepl aboid 2181295 */
 async function go() {
   const sleepTimer = 2000
   const langDir = './lang/'
-  const abortFilePath = 'last-translations-google.json'
+  const abortFilePath = 'last-translations.json'
   const originalFile = 'de.json'
   const originalLang = 'de'
   const translations = [
-    /* { file: 'dk.json', lang: 'da' }, */
-    /* { file: 'en.json', lang: 'en' }, */
-    /* { file: 'es.json', lang: 'es' }, */
-    /* { file: 'fr.json', lang: 'fr' }, */
-    /* { file: 'gr.json', lang: 'el' }, */
-    { file: 'hr.json', lang: 'hr' },
-    /* { file: 'it.json', lang: 'it' }, */
-    /* { file: 'nl.json', lang: 'nl' }, */
-    /* { file: 'pl.json', lang: 'pl' }, */
-    /* { file: 'pt.json', lang: 'pt' }, */
-    /* { file: 'ro.json', lang: 'ro' }, */
-    /* { file: 'se.json', lang: 'sv' }, */
+    { file: 'dk.json', lang: 'da' },
+    { file: 'en.json', lang: 'en-GB' },
+    { file: 'es.json', lang: 'es' },
+    { file: 'fr.json', lang: 'fr' },
+    { file: 'gr.json', lang: 'el' },
+    /* { file: 'hr.json', lang: 'hr' }, */
+    { file: 'it.json', lang: 'it' },
+    { file: 'nl.json', lang: 'nl' },
+    { file: 'pl.json', lang: 'pl' },
+    { file: 'pt.json', lang: 'pt-PT' },
+    { file: 'ro.json', lang: 'ro' },
+    { file: 'se.json', lang: 'sv' },
   ]
 
   const originalContent = JSON.parse(
@@ -62,10 +65,7 @@ async function go() {
       }
       keyFound = true
       try {
-        const res = await translate(originalContent[prop], {
-          from: originalLang,
-          to: translation.lang,
-        })
+        const res = await translate.translateText(originalContent[prop], originalLang, translation.lang, {tagHandling: 'xml'})
         console.log('translated prop: ' + prop)
         console.log(res.text)
         file[prop] = res.text
