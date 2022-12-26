@@ -21,6 +21,7 @@ export default function Home() {
         <h2 className='py-4 font-semibold text-lg'>
           <FormattedMessage defaultMessage='Angaben gemäss § 5 TMG' />
         </h2>
+        <p>Patrick Mirwald</p>
         <p>Delivery+</p>
         <p>Bgm.-Butscher-Str. 5</p>
         <p>67065 Ludwigshafen</p>
