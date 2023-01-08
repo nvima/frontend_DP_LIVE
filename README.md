@@ -1,3 +1,2 @@
-npm run build && npm run dev
-
-npm run build && npm run export
+NextJS Multilang project from delivery.plus
+Creates multiple pages with different languages in the build process.
