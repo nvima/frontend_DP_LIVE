@@ -33,7 +33,7 @@
     "license": "MIT",
     "devDependencies": {
         "@types/node": "18.8.2",
-        "@vitalets/google-translate-api": "^8.0.0",
+        "@vitalets/google-translate-api": "^9.1.0",
         "deepl-node": "^1.7.1",
         "fs": "0.0.1-security",
         "next-sitemap": "^3.1.24",
